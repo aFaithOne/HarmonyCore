@@ -1,0 +1,4 @@
+name: HarmonyCore
+version: ${project.version}
+main: me.lumenowaty.harmonycore.HarmonyCore
+api-version: 1.17
