@@ -1,22 +1,20 @@
-package me.lumenowaty.harmonycore.components;
+package me.lumenowaty.harmonycore.injectors;
 
 import me.lumenowaty.harmonycore.components.annotations.ConfigPath;
+import me.lumenowaty.harmonycore.utils.InjectorUtils;
 import org.bukkit.configuration.file.FileConfiguration;
 
 import java.lang.reflect.Field;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
-public final class ConfigStringInjector {
+public final class ConfigDataInjector {
 
     public static void injectClassDataFromFile(Object object, FileConfiguration configuration) {
         inject(object, configuration);
     }
 
     private static void inject(Object object, FileConfiguration configuration) {
-        List<Field> fields = Arrays.stream(object.getClass().getFields())
-                .filter(s -> s.isAnnotationPresent(ConfigPath.class)).collect(Collectors.toList());
+        List<Field> fields = InjectorUtils.getFields(object);
 
         for (Field f : fields) {
             ConfigPath reader = f.getAnnotation(ConfigPath.class);

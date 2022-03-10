@@ -1,4 +1,4 @@
-package me.lumenowaty.harmonycore.components;
+package me.lumenowaty.harmonycore.components.collections;
 
 import me.lumenowaty.harmonycore.components.interfaces.Mapable;
 
@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-public final class HMap<T, K> implements Mapable<T, K>, Serializable {
+public class HMap<T, K> implements Mapable<T, K>, Serializable {
 
     protected Map<T, K> map = new HashMap<>();
 

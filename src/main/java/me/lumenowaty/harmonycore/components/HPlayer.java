@@ -1,5 +1,7 @@
 package me.lumenowaty.harmonycore.components;
 
+import me.lumenowaty.harmonycore.components.collections.HList;
+
 import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.UUID;

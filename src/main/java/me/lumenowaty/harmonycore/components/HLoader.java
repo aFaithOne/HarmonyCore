@@ -5,6 +5,7 @@ import me.lumenowaty.harmonycore.components.interfaces.Savable;
 
 import java.io.File;
 
+@Deprecated
 public abstract class HLoader implements Savable {
 
     protected final String filePath;

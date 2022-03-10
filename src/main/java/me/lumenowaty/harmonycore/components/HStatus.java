@@ -1,17 +1,19 @@
 package me.lumenowaty.harmonycore.components;
 
 import me.lumenowaty.harmonycore.components.interfaces.Statusable;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.Serializable;
 
 public final class HStatus implements Statusable, Serializable {
 
     private boolean status;
+    @Nullable
     private String description;
 
     public HStatus() {
         this.status = true;
-        this.description = "";
+        this.description = null;
     }
 
     @Override

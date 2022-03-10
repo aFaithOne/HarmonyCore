@@ -1,4 +1,4 @@
-package me.lumenowaty.harmonycore.components;
+package me.lumenowaty.harmonycore.components.collections;
 
 
 import me.lumenowaty.harmonycore.components.interfaces.Listable;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public final class HList<T> implements Listable<T>, Serializable {
+public class HList<T> implements Listable<T>, Serializable {
 
     protected List<T> list = new ArrayList<>();
 
