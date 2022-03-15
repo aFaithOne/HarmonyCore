@@ -1,4 +1,4 @@
-package me.lumenowaty.harmonycore.components;
+package me.lumenowaty.harmonycore.components.tasks;
 
 public abstract class HRepeatingTask extends HTask {
 

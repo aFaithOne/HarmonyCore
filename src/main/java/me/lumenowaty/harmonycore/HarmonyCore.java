@@ -9,7 +9,6 @@ public final class HarmonyCore extends JavaPlugin {
     @Override
     public void onEnable() {
         harmonyCore = this;
-
     }
 
     @Override

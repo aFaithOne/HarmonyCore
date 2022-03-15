@@ -11,6 +11,6 @@ public abstract class HLoader implements Savable {
     protected final String filePath;
 
     public HLoader(String filePath) {
-        this.filePath = HarmonyCore.getInstance().getDataFolder()+ File.separator+filePath;
+        this.filePath = HarmonyCore.getInstance().getDataFolder() + File.separator+filePath;
     }
 }

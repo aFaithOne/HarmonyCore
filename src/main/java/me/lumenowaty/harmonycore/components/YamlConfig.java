@@ -46,18 +46,17 @@ public class YamlConfig<T extends JavaPlugin> {
 
     /**
      * @since 1.0.0
-     * @param pluginDataFolder The plugin's data directory, accessible with JavaPlugin#getDataFolder();
      * @param name The name of the config file excluding file extensions.
      *
      * Please notice that the constructor does not yet create the YAML-configuration file. To create the file on the disk, use {@link YamlConfig#createConfig()}.
      */
-    public YamlConfig(File pluginDataFolder, String name, T t) {
+    public YamlConfig(String name, T t) {
         this.t = t;
         StringBuilder fileName = new StringBuilder();
         fileName.append(name).append(".yml");
         this.name = fileName.toString();
 
-        YamlConfig = new File(pluginDataFolder, this.name);
+        YamlConfig = new File(t.getDataFolder(), this.name);
         this.pluginDataFolder = pluginDataFolder;
         config = YamlConfiguration.loadConfiguration(YamlConfig);
     }

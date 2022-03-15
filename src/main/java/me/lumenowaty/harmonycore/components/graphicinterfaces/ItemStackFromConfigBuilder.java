@@ -3,7 +3,6 @@ package me.lumenowaty.harmonycore.components.graphicinterfaces;
 import me.lumenowaty.harmonycore.components.enchantments.HEnchantmentsHolder;
 import me.lumenowaty.harmonycore.utils.ItemStackUtils;
 import org.bukkit.Material;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
