@@ -11,7 +11,7 @@ public class FormatColor {
 
     public static final Pattern HEX_PATTERN = Pattern.compile("#[a-fA-f0-9]{6}");
 
-    public static String hexFormat(String toFormat) {
+    private static String hexFormat(String toFormat) {
         Matcher match = HEX_PATTERN.matcher(toFormat);
 
         while(match.find()) {
@@ -22,7 +22,7 @@ public class FormatColor {
         return toFormat;
     }
 
-    public static String ccFormat(String toFormat) {
+    private static String ccFormat(String toFormat) {
         return ChatColor.translateAlternateColorCodes('&', toFormat);
     }
 
@@ -33,6 +33,8 @@ public class FormatColor {
     }
 
     public static String format(String toFormat) {
+        if (toFormat == null) return  "";
+
         toFormat = hexFormat(toFormat);
         toFormat = ccFormat(toFormat);
 

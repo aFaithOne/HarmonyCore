@@ -8,16 +8,5 @@ public abstract class HDelayedTask extends HTask {
         this.delayed = delayed;
     }
 
-    @Override
-    public int getId() {
-        return id;
-    }
 
-    @Override
-    public void run() {
-        task();
-    }
-
-    @Override
-    abstract void task();
 }

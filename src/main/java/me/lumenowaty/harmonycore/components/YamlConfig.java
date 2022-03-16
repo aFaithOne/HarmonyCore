@@ -57,7 +57,7 @@ public class YamlConfig<T extends JavaPlugin> {
         this.name = fileName.toString();
 
         YamlConfig = new File(t.getDataFolder(), this.name);
-        this.pluginDataFolder = pluginDataFolder;
+        this.pluginDataFolder = t.getDataFolder();
         config = YamlConfiguration.loadConfiguration(YamlConfig);
     }
 
