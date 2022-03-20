@@ -37,11 +37,11 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class YamlConfig<T extends JavaPlugin> {
 
-    private File YamlConfig;
+    private final File YamlConfig;
+    private final File pluginDataFolder;
+    private final String name;
+    private final T t;
     private FileConfiguration config;
-    private File pluginDataFolder;
-    private String name;
-    private T t;
 
 
     /**
@@ -52,12 +52,10 @@ public class YamlConfig<T extends JavaPlugin> {
      */
     public YamlConfig(String name, T t) {
         this.t = t;
-        StringBuilder fileName = new StringBuilder();
-        fileName.append(name).append(".yml");
-        this.name = fileName.toString();
-
-        YamlConfig = new File(t.getDataFolder(), this.name);
+        this.name = name + ".yml";
         this.pluginDataFolder = t.getDataFolder();
+
+        YamlConfig = new File(pluginDataFolder, this.name);
         config = YamlConfiguration.loadConfiguration(YamlConfig);
     }
 
