@@ -6,7 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public abstract class ConfigurationClass<T extends JavaPlugin> implements Injectable {
 
-    private T main;
+    private final T main;
     private final YamlConfig<T> yamlConfig;
     protected FileConfiguration config;
 

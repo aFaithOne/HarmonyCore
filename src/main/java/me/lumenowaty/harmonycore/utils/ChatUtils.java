@@ -1,13 +1,17 @@
 package me.lumenowaty.harmonycore.utils;
 
 import net.md_5.bungee.api.ChatColor;
+import net.md_5.bungee.api.chat.ClickEvent;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.api.chat.hover.content.Text;
 
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class FormatColor {
+public class ChatUtils {
 
     public static final Pattern HEX_PATTERN = Pattern.compile("#[a-fA-f0-9]{6}");
 
@@ -39,5 +43,12 @@ public class FormatColor {
         toFormat = ccFormat(toFormat);
 
         return toFormat;
+    }
+
+    public static TextComponent getPerformingCommandTextComponent(String text, String hoverText, String command) {
+        TextComponent component = new TextComponent(format(text));
+        component.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(format(hoverText))));
+        component.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, command));
+        return component;
     }
 }

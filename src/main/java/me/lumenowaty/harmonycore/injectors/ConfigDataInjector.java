@@ -15,13 +15,13 @@ public final class ConfigDataInjector {
 
     private static void inject(Object object, FileConfiguration configuration) {
         List<Field> fields = InjectorUtils.getFields(object);
-
         for (Field f : fields) {
             ConfigPath reader = f.getAnnotation(ConfigPath.class);
             f.setAccessible(true);
             try {
                 if (reader == null) continue;
                 f.set(object, configuration.get(reader.path()));
+                System.out.println("Injected " + configuration.get(reader.path()) + " to " + f.getName());
             } catch (Exception e) {
                 e.printStackTrace();
             }
