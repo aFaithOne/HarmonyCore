@@ -1,14 +1,24 @@
 package me.lumenowaty.harmonycore.components;
 
 import me.lumenowaty.harmonycore.components.annotations.ConfigItem;
+import me.lumenowaty.harmonycore.components.enchantments.HEnchantmentsHolder;
+import me.lumenowaty.harmonycore.components.graphicinterfaces.ItemStackFromConfigBuilder;
+import me.lumenowaty.harmonycore.components.interfaces.Injectable;
+import me.lumenowaty.harmonycore.injectors.ItemStackInjector;
+import me.lumenowaty.harmonycore.utils.ChatUtils;
 import org.bukkit.Material;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.inventory.ItemStack;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-public class HItemData {
+public class HItemData implements Injectable {
+
+    private final FileConfiguration config;
+    private final String path;
 
     @ConfigItem(itemField = "name")
     private String name;
@@ -21,14 +31,21 @@ public class HItemData {
     @ConfigItem(itemField = "material")
     private String material;
     @ConfigItem(itemField = "glow")
-    private String isGlow;
+    private String glow;
+
+    public HItemData(FileConfiguration config, String path) {
+        this.config = config;
+        this.path = path;
+
+        injectData();
+    }
 
     public String getName() {
-        return name;
+        return ChatUtils.format(name);
     }
 
     public List<String> getLore() {
-        return lore;
+        return ChatUtils.format(lore);
     }
 
     public Map<String, Integer> getEnchantments() {
@@ -48,7 +65,17 @@ public class HItemData {
         return Material.getMaterial(material);
     }
 
-    public boolean getIsGlow() {
-        return Boolean.parseBoolean(isGlow);
+    public boolean isGlow() {
+        return Boolean.parseBoolean(glow);
+    }
+
+    public ItemStack getItem() {
+        ItemStackFromConfigBuilder builder = new ItemStackFromConfigBuilder(getName(), getLore(),getEnchantments(), getAmount(), getMaterial(), isGlow());
+        return builder.getItem();
+    }
+
+    @Override
+    public void injectData() {
+        ItemStackInjector.injectClassDataFromFile(this, config, path);
     }
 }

@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class InjectorUtils {
 
     public static List<Field> getFields(Object object) {
-        return Arrays.stream(object.getClass().getFields())
+        return Arrays.stream(object.getClass().getDeclaredFields())
                 .filter(s -> s.isAnnotationPresent(ConfigPath.class)).collect(Collectors.toList());
     }
 

@@ -39,13 +39,16 @@ public class ItemStackFromConfigBuilder implements Listener {
         }
     }
 
-    private ItemStack getItem() {
+    public ItemStack getItem() {
         parseEnchantments();
 
         ItemStack itemStack = new ItemStack(material, amount);
         itemStack.addUnsafeEnchantments(enchantments);
 
         ItemMeta itemMeta = itemStack.getItemMeta();
+
+        if (itemMeta == null) return itemStack;
+
         itemMeta.setLore(lore);
         itemMeta.setDisplayName(name);
         itemStack.setItemMeta(itemMeta);

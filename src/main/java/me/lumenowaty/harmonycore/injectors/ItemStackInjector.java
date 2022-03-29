@@ -15,10 +15,10 @@ public class ItemStackInjector {
 
     private static void inject(Object object, FileConfiguration configuration, String pathToItem) {
         List<Field> fields = InjectorUtils.getFields(object);
-
+        System.out.println("hello");
         for (Field f : fields) {
-            ConfigItem reader = f.getAnnotation(ConfigItem.class);
             f.setAccessible(true);
+            ConfigItem reader = f.getAnnotation(ConfigItem.class);
             try {
                 if (reader == null) continue;
                 if (f.getName().equals(reader.itemField())) continue;

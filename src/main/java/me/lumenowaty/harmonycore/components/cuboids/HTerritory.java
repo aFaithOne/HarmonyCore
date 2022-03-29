@@ -3,6 +3,8 @@ package me.lumenowaty.harmonycore.components.cuboids;
 import org.bukkit.Location;
 import org.bukkit.World;
 
+import java.util.Objects;
+
 public class HTerritory {
 
     private Location minLocation;
@@ -37,7 +39,7 @@ public class HTerritory {
                 x < minLocation.getBlockX() ||
                 y < minLocation.getBlockY() ||
                 z < minLocation.getBlockZ() ||
-                !world.equals(maxLocation.getWorld())));
+                !Objects.equals(world, maxLocation.getWorld())));
     }
 
     public boolean isLocationInsideTerritory(Location location) {
@@ -46,15 +48,12 @@ public class HTerritory {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("world: ").append(minLocation.getWorld())
-                .append(" x1: ").append(minLocation.getBlockX())
-                .append(" y1: ").append(minLocation.getBlockY())
-                .append(" z1: ").append(minLocation.getBlockZ())
-                .append(" x2: ").append(maxLocation.getBlockX())
-                .append(" y2: ").append(maxLocation.getBlockY())
-                .append(" z2: ").append(maxLocation.getBlockZ());
-
-        return builder.toString();
+        return "world: " + minLocation.getWorld() +
+                " x1: " + minLocation.getBlockX() +
+                " y1: " + minLocation.getBlockY() +
+                " z1: " + minLocation.getBlockZ() +
+                " x2: " + maxLocation.getBlockX() +
+                " y2: " + maxLocation.getBlockY() +
+                " z2: " + maxLocation.getBlockZ();
     }
 }

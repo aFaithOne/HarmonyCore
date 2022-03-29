@@ -1,0 +1,8 @@
+wand:
+  name: '&7&lMagic Wand'
+  lore:
+    - '&f- Press &aLMB &fto select first position.'
+    - '&f- Press &aRMB &fto select second position.'
+
+messages:
+  player-command: '&cThis command can be used only by player.'

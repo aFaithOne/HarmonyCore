@@ -45,6 +45,10 @@ public class ChatUtils {
         return toFormat;
     }
 
+    public static List<String> format(List<String> toFormat) {
+        return toFormat.stream().map(ChatUtils::format).collect(Collectors.toList());
+    }
+
     public static TextComponent getPerformingCommandTextComponent(String text, String hoverText, String command) {
         TextComponent component = new TextComponent(format(text));
         component.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(format(hoverText))));
