@@ -5,14 +5,16 @@ import me.lumenowaty.harmonycore.components.HItemData;
 import org.bukkit.inventory.ItemStack;
 
 public class HWand {
-    /*
+
     public static ItemStack WAND;
 
-    static {
+    public static void load() {
         HItemData wand = new HItemData(HarmonyCore.getPluginConfig().getConfig(), "wand");
-        wand.injectData();
-        WAND = wand.getItem();
+        wand.amount = "1";
+        wand.glow = "true";
+        wand.material = "WOODEN_AXE";
+        WAND =  wand.getItem();
     }
 
-     */
+
 }

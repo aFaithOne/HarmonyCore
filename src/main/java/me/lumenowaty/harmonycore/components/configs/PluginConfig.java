@@ -2,8 +2,8 @@ package me.lumenowaty.harmonycore.components.configs;
 
 import me.lumenowaty.harmonycore.HarmonyCore;
 import me.lumenowaty.harmonycore.components.ConfigurationClass;
-import me.lumenowaty.harmonycore.components.annotations.ConfigPath;
-import me.lumenowaty.harmonycore.injectors.ConfigDataInjector;
+import me.lumenowaty.harmonycore.components.annotations.ConfigPath;;
+import me.lumenowaty.harmonycore.injectors.DataInjector;
 
 public class PluginConfig extends ConfigurationClass<HarmonyCore> {
 
@@ -13,7 +13,7 @@ public class PluginConfig extends ConfigurationClass<HarmonyCore> {
 
     @Override
     public void injectData() {
-        ConfigDataInjector.injectClassDataFromFile(this, super.config);
+        DataInjector.injectClassDataFromFile(this, super.config);
     }
 
     @ConfigPath(path = "messages.player-command")

@@ -1,7 +1,6 @@
-package me.lumenowaty.harmonycore.components.graphicinterfaces;
+package me.lumenowaty.harmonycore.utils;
 
 import me.lumenowaty.harmonycore.components.enchantments.HEnchantmentsHolder;
-import me.lumenowaty.harmonycore.utils.ItemStackUtils;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.Listener;
@@ -53,7 +52,7 @@ public class ItemStackFromConfigBuilder implements Listener {
         itemMeta.setDisplayName(name);
         itemStack.setItemMeta(itemMeta);
 
-        if (isGlow) itemStack.addEnchantment(HEnchantmentsHolder.myEnchantments.getByKey("GLOW").get(), 0);
+        if (isGlow) itemStack.addUnsafeEnchantment(HEnchantmentsHolder.myEnchantments.getByKey("GLOWING").get(), 0);
 
         return itemStack;
     }

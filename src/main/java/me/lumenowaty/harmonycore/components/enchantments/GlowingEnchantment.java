@@ -1,6 +1,7 @@
 package me.lumenowaty.harmonycore.components.enchantments;
 
 import me.lumenowaty.harmonycore.HarmonyCore;
+import me.lumenowaty.harmonycore.components.ExceptionPrinter;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
@@ -58,7 +59,8 @@ public class GlowingEnchantment extends Enchantment {
         return false;
     }
 
-    static {
+
+    public static void load() {
         try {
             Field f = Enchantment.class.getDeclaredField("acceptingNew");
             f.setAccessible(true);
@@ -68,12 +70,12 @@ public class GlowingEnchantment extends Enchantment {
             e.printStackTrace();
         }
         try {
-            GlowingEnchantment glow = new GlowingEnchantment(
-                    Objects.requireNonNull(NamespacedKey.fromString("harmonycore.glowing", HarmonyCore.getInstance())));
+            GlowingEnchantment glow = new GlowingEnchantment(new NamespacedKey(HarmonyCore.getInstance(), "GLOWING"));
+            HEnchantmentsHolder.myEnchantments.add("GLOWING", glow);
             Enchantment.registerEnchantment(glow);
-            HEnchantmentsHolder.myEnchantments.add("GLOW", glow);
         }
         catch (IllegalArgumentException e){
+            ExceptionPrinter.logException(e.getMessage());
         }
         catch(Exception e){
             e.printStackTrace();
