@@ -5,6 +5,8 @@ import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.chat.hover.content.Text;
+import org.bukkit.Bukkit;
+import org.bukkit.World;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -54,5 +56,13 @@ public class ChatUtils {
         component.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(format(hoverText))));
         component.setClickEvent(new ClickEvent(ClickEvent.Action.RUN_COMMAND, command));
         return component;
+    }
+
+    public static void broadcastMessage(String message) {
+        Bukkit.broadcastMessage(format(message));
+    }
+
+    public static void broadcastMessage(TextComponent component) {
+        Bukkit.spigot().broadcast(component);
     }
 }

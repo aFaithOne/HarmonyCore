@@ -5,12 +5,12 @@ import org.bukkit.World;
 
 import java.util.Objects;
 
-public class HTerritory {
+public class Territory {
 
     private Location minLocation;
     private Location maxLocation;
 
-    public HTerritory(Location firstLocation, Location secondLocation) {
+    public Territory(Location firstLocation, Location secondLocation) {
         sortLocations(firstLocation, secondLocation);
     }
 

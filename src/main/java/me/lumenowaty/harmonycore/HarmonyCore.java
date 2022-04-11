@@ -5,7 +5,6 @@ import me.lumenowaty.harmonycore.components.cuboids.HWand;
 import me.lumenowaty.harmonycore.components.cuboids.commands.MagicWandCommand;
 import me.lumenowaty.harmonycore.components.enchantments.GlowingEnchantment;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.jetbrains.annotations.NotNull;
 
 public final class HarmonyCore extends JavaPlugin {
 
@@ -14,6 +13,8 @@ public final class HarmonyCore extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
+
         harmonyCore = this;
         pluginConfig = new PluginConfig("config", this);
         pluginConfig.injectData();
@@ -44,7 +45,6 @@ public final class HarmonyCore extends JavaPlugin {
         return harmonyCore;
     }
 
-    @NotNull
     public static PluginConfig getPluginConfig() {
         return pluginConfig;
     }

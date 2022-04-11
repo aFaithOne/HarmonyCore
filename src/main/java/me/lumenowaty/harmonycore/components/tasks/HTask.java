@@ -26,13 +26,14 @@ public abstract class HTask implements Taskable {
     }
 
     @Override
-    public void setStopTask(Runnable action, int time) {
+    public void setStopTask(Runnable action, long seconds) {
         new BukkitRunnable() {
 
             @Override
             public void run() {
                 stop();
+                action.run();
             }
-        }.runTaskLaterAsynchronously(HarmonyCore.getInstance(), 20L * time);
+        }.runTaskLaterAsynchronously(HarmonyCore.getInstance(), 20L * seconds);
     }
 }

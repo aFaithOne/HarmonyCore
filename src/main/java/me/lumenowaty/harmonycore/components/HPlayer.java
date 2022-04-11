@@ -1,22 +1,21 @@
 package me.lumenowaty.harmonycore.components;
 
-import me.lumenowaty.harmonycore.components.collections.HList;
-
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
 public class HPlayer {
 
     private final String initialIP;
-    private final HList<String> usedIP;
+    private final List<String> usedIP;
     private final LocalDateTime initialDate;
     private final LocalDateTime lastJoinDate;
     private final UUID uuid;
     private final boolean premiumClient;
     private String mail;
 
-    public HPlayer(String initialIP, HList<String> usedIP, LocalDateTime initialDate, LocalDateTime lastJoinDate, UUID uuid, boolean premiumClient) {
+    public HPlayer(String initialIP, List<String> usedIP, LocalDateTime initialDate, LocalDateTime lastJoinDate, UUID uuid, boolean premiumClient) {
         this.initialIP = initialIP;
         this.usedIP = usedIP;
         this.initialDate = initialDate;
@@ -25,7 +24,7 @@ public class HPlayer {
         this.premiumClient = premiumClient;
     }
 
-    public HPlayer(String initialIP, HList<String> usedIP, LocalDateTime initialDate, LocalDateTime lastJoinDate, UUID uuid, boolean premiumClient, String mail) {
+    public HPlayer(String initialIP, List<String> usedIP, LocalDateTime initialDate, LocalDateTime lastJoinDate, UUID uuid, boolean premiumClient, String mail) {
         this.initialIP = initialIP;
         this.usedIP = usedIP;
         this.initialDate = initialDate;
@@ -39,7 +38,7 @@ public class HPlayer {
         return initialIP;
     }
 
-    public HList<String> getUsedIP() {
+    public List<String> getUsedIP() {
         return usedIP;
     }
 

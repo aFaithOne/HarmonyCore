@@ -18,4 +18,7 @@ public class PluginConfig extends ConfigurationClass<HarmonyCore> {
 
     @ConfigPath(path = "messages.player-command")
     public String playerCommand;
+
+    @ConfigPath(path ="messages.empty-enchantment")
+    public String emptyEnchantment;
 }

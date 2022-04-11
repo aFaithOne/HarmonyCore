@@ -20,7 +20,4 @@ public class InjectorUtils {
                 .filter(s -> s.isAnnotationPresent(ConfigItem.class)).collect(Collectors.toList());
     }
 
-
-
-
 }

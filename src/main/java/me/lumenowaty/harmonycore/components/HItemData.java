@@ -30,6 +30,7 @@ public class HItemData implements Injectable {
     public String glow;
 
     public HItemData(FileConfiguration config, String path) {
+        System.out.println("tworze klase HItem");
         this.config = config;
         this.path = path;
 

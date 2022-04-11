@@ -6,3 +6,4 @@ wand:
 
 messages:
   player-command: '&cThis command can be used only by player.'
+  empty-enchantment: '&cCannot find %ench% Enchantments in holder.'

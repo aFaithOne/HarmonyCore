@@ -2,6 +2,7 @@ package me.lumenowaty.harmonycore.components.enchantments;
 
 import me.lumenowaty.harmonycore.HarmonyCore;
 import me.lumenowaty.harmonycore.components.ExceptionPrinter;
+import me.lumenowaty.harmonycore.components.api.API;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
@@ -71,7 +72,7 @@ public class GlowingEnchantment extends Enchantment {
         }
         try {
             GlowingEnchantment glow = new GlowingEnchantment(new NamespacedKey(HarmonyCore.getInstance(), "GLOWING"));
-            HEnchantmentsHolder.myEnchantments.add("GLOWING", glow);
+            API.customEnchantments.add("GLOWING", glow);
             Enchantment.registerEnchantment(glow);
         }
         catch (IllegalArgumentException e){
