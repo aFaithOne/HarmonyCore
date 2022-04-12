@@ -5,31 +5,36 @@ import org.bukkit.Location;
 
 import java.util.UUID;
 
-public class SelectedTerritory {
+public class SelectedTerritory extends HMap<UUID, SelectedTerritory.MagicSelect> {
 
+    public static class MagicSelect {
 
-    public static class Holder extends HMap<UUID, SelectedTerritory.MagicSelect> {
+        private Location first;
+        private Location second;
 
-    }
+        public MagicSelect() {
 
-    static class MagicSelect {
-        private Location location;
-        private Location location2;
-
-        public Location getLocation() {
-            return location;
         }
 
-        public void setLocation(Location location) {
-            this.location = location;
+        public MagicSelect(Location first, Location second) {
+            this.first = first;
+            this.second = second;
         }
 
-        public Location getLocation2() {
-            return location2;
+        public Location getFirst() {
+            return first;
         }
 
-        public void setLocation2(Location location2) {
-            this.location2 = location2;
+        public void setFirst(Location first) {
+            this.first = first;
+        }
+
+        public Location getSecond() {
+            return second;
+        }
+
+        public void setSecond(Location second) {
+            this.second = second;
         }
     }
 }

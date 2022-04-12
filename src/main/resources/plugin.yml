@@ -5,4 +5,8 @@ api-version: 1.18
 
 commands:
   magicWand:
-    default: op
+
+permissions:
+  harmonyCore:
+    magicWand:
+      default: op

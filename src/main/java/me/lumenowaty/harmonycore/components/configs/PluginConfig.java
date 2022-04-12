@@ -21,4 +21,11 @@ public class PluginConfig extends ConfigurationClass<HarmonyCore> {
 
     @ConfigPath(path ="messages.empty-enchantment")
     public String emptyEnchantment;
+
+    @ConfigPath(path = "messages.magicWand-second-selection")
+    public String magicWandSecondSelection;
+
+    @ConfigPath(path = "messages.magicWand-first-selection")
+    public String magicWandFirstSelection;
+
 }

@@ -1,9 +1,10 @@
 package me.lumenowaty.harmonycore;
 
 import me.lumenowaty.harmonycore.components.configs.PluginConfig;
-import me.lumenowaty.harmonycore.components.cuboids.HWand;
 import me.lumenowaty.harmonycore.components.cuboids.commands.MagicWandCommand;
+import me.lumenowaty.harmonycore.components.cuboids.events.MagicWandListener;
 import me.lumenowaty.harmonycore.components.enchantments.GlowingEnchantment;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class HarmonyCore extends JavaPlugin {
@@ -13,15 +14,13 @@ public final class HarmonyCore extends JavaPlugin {
 
     @Override
     public void onEnable() {
-
-
         harmonyCore = this;
         pluginConfig = new PluginConfig("config", this);
         pluginConfig.injectData();
 
         loadCustomEnchantments();
-        loadComponents();
         registerCommands();
+        registerEvents();
     }
 
     @Override
@@ -33,13 +32,14 @@ public final class HarmonyCore extends JavaPlugin {
         getCommand("magicWand").setExecutor(new MagicWandCommand(this));
     }
 
+    private void registerEvents() {
+        Bukkit.getPluginManager().registerEvents(new MagicWandListener(), this);
+    }
+
     private void loadCustomEnchantments() {
        GlowingEnchantment.load();
     }
 
-    private void loadComponents() {
-        HWand.load();
-    }
 
     public static HarmonyCore getInstance() {
         return harmonyCore;

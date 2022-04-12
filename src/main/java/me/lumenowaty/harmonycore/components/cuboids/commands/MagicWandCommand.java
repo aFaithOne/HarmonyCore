@@ -1,13 +1,14 @@
 package me.lumenowaty.harmonycore.components.cuboids.commands;
 
 import me.lumenowaty.harmonycore.HarmonyCore;
-import me.lumenowaty.harmonycore.components.cuboids.HWand;
+import me.lumenowaty.harmonycore.components.api.API;
+import me.lumenowaty.harmonycore.components.cuboids.MagicWand;
+import me.lumenowaty.harmonycore.components.cuboids.SelectedTerritory;
 import me.lumenowaty.harmonycore.utils.ChatUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 public class MagicWandCommand implements CommandExecutor {
@@ -20,13 +21,12 @@ public class MagicWandCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
-        if (! (sender instanceof Player)) {
+        if (! (sender instanceof Player actor)) {
             sender.sendMessage(ChatUtils.format(HarmonyCore.getPluginConfig().playerCommand));
             return false;
         }
-        Player actor = (Player) sender;
-        ItemStack wand = HWand.WAND;
-        actor.getInventory().addItem(HWand.WAND);
+        actor.getInventory().addItem(MagicWand.WAND);
+        API.selectedTerritory.put(actor.getUniqueId(), new SelectedTerritory.MagicSelect());
         return true;
     }
 }

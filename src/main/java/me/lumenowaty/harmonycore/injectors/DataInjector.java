@@ -15,17 +15,18 @@ public final class DataInjector {
         inject(object, configuration);
     }
 
-    public static void injectClassDataFromFile(Object object, FileConfiguration configuration, String pathToItem) {
+    public static void injectItemDataFromFile(Object object, FileConfiguration configuration, String pathToItem) {
         inject(object, configuration, pathToItem);
     }
 
     private static void inject(Object object, FileConfiguration configuration) {
         for (Field f : getConfigFields(object)) {
             f.setAccessible(true);
+
             ConfigPath reader = f.getAnnotation(ConfigPath.class);
+
             try {
                 if (reader == null) continue;
-
                 f.set(object, configuration.get(reader.path()));
             } catch (Exception e) {
                 e.printStackTrace();
@@ -39,9 +40,9 @@ public final class DataInjector {
             f.setAccessible(true);
 
             ConfigItem reader = f.getAnnotation(ConfigItem.class);
+
             try {
                 if (reader == null) continue;
-
                 f.set(object, configuration.get(pathToItem + "." + reader.itemField()));
             } catch (Exception e) {
                 e.printStackTrace();

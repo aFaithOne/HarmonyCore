@@ -2,7 +2,6 @@ package me.lumenowaty.harmonycore.components;
 
 import me.lumenowaty.harmonycore.components.annotations.ConfigItem;
 import me.lumenowaty.harmonycore.utils.ItemStackFromConfigBuilder;
-import me.lumenowaty.harmonycore.components.interfaces.Injectable;
 import me.lumenowaty.harmonycore.injectors.DataInjector;
 import me.lumenowaty.harmonycore.utils.ChatUtils;
 import org.bukkit.Material;
@@ -11,30 +10,58 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.*;
 
-public class HItemData implements Injectable {
+public class HItemData {
 
     private final FileConfiguration config;
     private final String path;
 
     @ConfigItem(itemField = "name")
-    public String name;
+    private String name;
     @ConfigItem(itemField = "lore")
-    public List<String> lore;
+    private List<String> lore;
     @ConfigItem(itemField = "enchantments")
-    public Map<String, String> enchantments;
+    private Map<String, String> enchantments;
     @ConfigItem(itemField = "amount")
-    public String amount;
+    private String amount;
     @ConfigItem(itemField = "material")
-    public String material;
+    private String material;
     @ConfigItem(itemField = "glow")
-    public String glow;
+    private String glow;
 
     public HItemData(FileConfiguration config, String path) {
-        System.out.println("tworze klase HItem");
+
         this.config = config;
         this.path = path;
+    }
 
-        injectData();
+    public HItemData setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public HItemData setLore(List<String> lore) {
+        this.lore = lore;
+        return this;
+    }
+
+    public HItemData setEnchantments(Map<String, String> enchantments) {
+        this.enchantments = enchantments;
+        return this;
+    }
+
+    public HItemData setAmount(String amount) {
+        this.amount = amount;
+        return this;
+    }
+
+    public HItemData setMaterial(String material) {
+        this.material = material;
+        return this;
+    }
+
+    public HItemData setGlow(String glow) {
+        this.glow = glow;
+        return this;
     }
 
     public String getName() {
@@ -51,12 +78,15 @@ public class HItemData implements Injectable {
 
     public Map<String, Integer> getEnchantments() {
         Map<String, Integer> map = new HashMap<>();
+
         if (enchantments == null) return map;
 
         Set<String> strings = enchantments.keySet();
+
         for (String en : strings) {
             map.put(en, Integer.parseInt(enchantments.get(en)));
         }
+
         return map;
     }
 
@@ -83,8 +113,8 @@ public class HItemData implements Injectable {
         return builder.getItem();
     }
 
-    @Override
-    public void injectData() {
-        DataInjector.injectClassDataFromFile(this, config, path);
+    public HItemData injectData() {
+        DataInjector.injectItemDataFromFile(this, config, path);
+        return this;
     }
 }
