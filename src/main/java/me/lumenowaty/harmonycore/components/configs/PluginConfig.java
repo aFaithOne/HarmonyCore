@@ -12,8 +12,9 @@ public class PluginConfig extends ConfigurationClass<HarmonyCore> {
     }
 
     @Override
-    public void injectData() {
+    public PluginConfig injectData() {
         DataInjector.injectClassDataFromFile(this, super.config);
+        return this;
     }
 
     @ConfigPath(path = "messages.player-command")
@@ -27,5 +28,8 @@ public class PluginConfig extends ConfigurationClass<HarmonyCore> {
 
     @ConfigPath(path = "messages.magicWand-first-selection")
     public String magicWandFirstSelection;
+
+    @ConfigPath(path ="messages.no-permission")
+    public String noPermission;
 
 }

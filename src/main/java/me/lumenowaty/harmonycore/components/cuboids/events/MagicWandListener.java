@@ -43,12 +43,12 @@ public class MagicWandListener implements Listener {
 
         if (Action.LEFT_CLICK_BLOCK.equals(action)) {
             API.selectedTerritory.getByKey(uuid).get().setFirst(clickedBlock.getLocation());
-            actor.sendMessage(ChatUtils.format(HarmonyCore.getPluginConfig().magicWandFirstSelection));
+            actor.sendMessage(ChatUtils.format(API.pluginConfig.magicWandFirstSelection));
         }
 
         if (Action.RIGHT_CLICK_BLOCK.equals(action)) {
             API.selectedTerritory.getByKey(uuid).get().setSecond(clickedBlock.getLocation());
-            actor.sendMessage(ChatUtils.format(HarmonyCore.getPluginConfig().magicWandSecondSelection));
+            actor.sendMessage(ChatUtils.format(API.pluginConfig.magicWandSecondSelection));
         }
     }
 

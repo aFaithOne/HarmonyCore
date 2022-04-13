@@ -22,7 +22,12 @@ public class MagicWandCommand implements CommandExecutor {
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (! (sender instanceof Player actor)) {
-            sender.sendMessage(ChatUtils.format(HarmonyCore.getPluginConfig().playerCommand));
+            sender.sendMessage(ChatUtils.format(API.pluginConfig.playerCommand));
+            return false;
+        }
+
+        if (! (actor.hasPermission("harmonyCore.magicWand") || actor.isOp())) {
+            sender.sendMessage(API.pluginConfig.noPermission);
             return false;
         }
         actor.getInventory().addItem(MagicWand.WAND);

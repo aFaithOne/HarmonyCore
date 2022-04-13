@@ -59,7 +59,7 @@ public class ItemStackFromConfigBuilder implements Listener {
         if (isGlow) API.customEnchantments.getByKey(key).ifPresentOrElse(
                 (s) -> itemStack.addUnsafeEnchantment(s, 0),
                 () -> {
-                    throw new NullPointerException(ChatUtils.format(HarmonyCore.getPluginConfig().emptyEnchantment)
+                    throw new NullPointerException(ChatUtils.format(API.pluginConfig.emptyEnchantment)
                             .replaceAll("%ench%", key));
                 });
 

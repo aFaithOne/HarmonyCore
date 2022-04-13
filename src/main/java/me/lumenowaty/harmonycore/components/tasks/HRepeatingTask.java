@@ -1,11 +1,14 @@
 package me.lumenowaty.harmonycore.components.tasks;
 
-public abstract class HRepeatingTask extends HTask {
+import org.bukkit.plugin.java.JavaPlugin;
+
+public abstract class HRepeatingTask<T extends JavaPlugin> extends HTask {
 
     protected final int period;
     protected final int delayed;
 
-    public HRepeatingTask(int period, int delayed) {
+    public HRepeatingTask(T main, int period, int delayed) {
+        super(main);
         this.period = period;
         this.delayed = delayed;
     }

@@ -1,10 +1,9 @@
 package me.lumenowaty.harmonycore.components;
 
-import me.lumenowaty.harmonycore.components.interfaces.Injectable;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public abstract class ConfigurationClass<T extends JavaPlugin> implements Injectable {
+public abstract class ConfigurationClass<T extends JavaPlugin> {
 
     private final T main;
     private final YamlConfig<T> yamlConfig;
@@ -22,7 +21,7 @@ public abstract class ConfigurationClass<T extends JavaPlugin> implements Inject
         config = yamlConfig.getConfig();
     }
 
-    public abstract void injectData();
+    public abstract ConfigurationClass<T> injectData();
 
     public FileConfiguration getConfig() {
         return config;

@@ -10,13 +10,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class HarmonyCore extends JavaPlugin {
 
     private static HarmonyCore harmonyCore;
-    private static PluginConfig pluginConfig;
 
     @Override
     public void onEnable() {
         harmonyCore = this;
-        pluginConfig = new PluginConfig("config", this);
-        pluginConfig.injectData();
 
         loadCustomEnchantments();
         registerCommands();
@@ -43,9 +40,5 @@ public final class HarmonyCore extends JavaPlugin {
 
     public static HarmonyCore getInstance() {
         return harmonyCore;
-    }
-
-    public static PluginConfig getPluginConfig() {
-        return pluginConfig;
     }
 }

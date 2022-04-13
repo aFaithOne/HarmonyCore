@@ -1,14 +1,19 @@
 package me.lumenowaty.harmonycore.components.tasks;
 
-import me.lumenowaty.harmonycore.HarmonyCore;
 import me.lumenowaty.harmonycore.components.interfaces.Taskable;
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 
-public abstract class HTask implements Taskable {
+public abstract class HTask<T extends JavaPlugin> implements Taskable {
 
+    protected T main;
     protected int id;
+
+    public HTask(T main) {
+        this.main = main;
+    }
 
     @Override
     public void run() {
@@ -31,9 +36,9 @@ public abstract class HTask implements Taskable {
 
             @Override
             public void run() {
-                stop();
                 action.run();
+                stop();
             }
-        }.runTaskLaterAsynchronously(HarmonyCore.getInstance(), 20L * seconds);
+        }.runTaskLaterAsynchronously(main, 20L * seconds);
     }
 }
