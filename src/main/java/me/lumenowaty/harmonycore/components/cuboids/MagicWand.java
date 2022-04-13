@@ -1,8 +1,7 @@
 package me.lumenowaty.harmonycore.components.cuboids;
 
-import me.lumenowaty.harmonycore.HarmonyCore;
 import me.lumenowaty.harmonycore.components.HItemData;
-import me.lumenowaty.harmonycore.components.api.API;
+import me.lumenowaty.harmonycore.api.API;
 import org.bukkit.inventory.ItemStack;
 
 

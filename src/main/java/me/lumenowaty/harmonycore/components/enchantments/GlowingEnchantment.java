@@ -2,7 +2,7 @@ package me.lumenowaty.harmonycore.components.enchantments;
 
 import me.lumenowaty.harmonycore.HarmonyCore;
 import me.lumenowaty.harmonycore.components.ExceptionPrinter;
-import me.lumenowaty.harmonycore.components.api.API;
+import me.lumenowaty.harmonycore.api.API;
 import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.enchantments.EnchantmentTarget;
@@ -10,7 +10,6 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.reflect.Field;
-import java.util.Objects;
 
 public class GlowingEnchantment extends Enchantment {
 

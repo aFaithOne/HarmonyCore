@@ -1,7 +1,6 @@
 package me.lumenowaty.harmonycore.components.cuboids.events;
 
-import me.lumenowaty.harmonycore.HarmonyCore;
-import me.lumenowaty.harmonycore.components.api.API;
+import me.lumenowaty.harmonycore.api.API;
 import me.lumenowaty.harmonycore.components.cuboids.MagicWand;
 import me.lumenowaty.harmonycore.components.cuboids.SelectedTerritory;
 import me.lumenowaty.harmonycore.utils.ChatUtils;

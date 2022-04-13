@@ -1,4 +1,4 @@
-package me.lumenowaty.harmonycore.components.api;
+package me.lumenowaty.harmonycore.api;
 
 import me.lumenowaty.harmonycore.HarmonyCore;
 import me.lumenowaty.harmonycore.components.configs.PluginConfig;

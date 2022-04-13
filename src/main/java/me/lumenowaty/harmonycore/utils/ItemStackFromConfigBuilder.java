@@ -1,7 +1,6 @@
 package me.lumenowaty.harmonycore.utils;
 
-import me.lumenowaty.harmonycore.HarmonyCore;
-import me.lumenowaty.harmonycore.components.api.API;
+import me.lumenowaty.harmonycore.api.API;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.Listener;
@@ -10,7 +9,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 public class ItemStackFromConfigBuilder implements Listener {
 

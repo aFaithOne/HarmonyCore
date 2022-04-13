@@ -1,6 +1,6 @@
 package me.lumenowaty.harmonycore.components.graphicinterfaces;
 
-import me.lumenowaty.harmonycore.components.api.API;
+import me.lumenowaty.harmonycore.api.API;
 import me.lumenowaty.harmonycore.components.collections.HMap;
 import me.lumenowaty.harmonycore.utils.ChatUtils;
 import org.bukkit.entity.Player;
