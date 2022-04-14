@@ -11,6 +11,8 @@ public interface Mapable<T, K> {
 
     void put(T t, K k);
 
+    void set(T t, K k);
+
     void setMap(Map<T, K> map);
 
     boolean containsKey(T t);

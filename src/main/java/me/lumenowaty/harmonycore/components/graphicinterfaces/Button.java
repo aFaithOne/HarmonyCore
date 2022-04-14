@@ -2,20 +2,20 @@ package me.lumenowaty.harmonycore.components.graphicinterfaces;
 
 import me.lumenowaty.harmonycore.components.HItemData;
 import me.lumenowaty.harmonycore.components.annotations.Optional;
-import org.bukkit.inventory.Inventory;
+import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.util.function.Consumer;
 
 public class Button {
 
     private HItemData buttonItem;
-    private int index;
     @Optional
-    private Runnable action;
+    private Consumer<Player> action;
 
-    public Button(@NotNull HItemData buttonItem, int placeId, @Nullable Runnable action) {
+    public Button(@NotNull HItemData buttonItem, @Nullable Consumer<Player> action) {
         this.buttonItem = buttonItem;
-        this.index = placeId;
         this.action = action;
     }
 
@@ -28,25 +28,12 @@ public class Button {
         return this;
     }
 
-    public int getIndex() {
-        return index;
-    }
-
-    public Button setIndex(int index) {
-        this.index = index;
-        return this;
-    }
-
-    public Runnable getAction() {
+    public Consumer<Player> getAction() {
         return action;
     }
 
-    public Button setAction(Runnable action) {
+    public Button setAction(Consumer<Player> action) {
         this.action = action;
         return this;
-    }
-
-    public void insertButtonToInventory(Inventory inventory) {
-        inventory.setItem(index, buttonItem.getItem());
     }
 }

@@ -1,6 +1,6 @@
 package me.lumenowaty.harmonycore;
 
-import me.lumenowaty.harmonycore.components.configs.PluginConfig;
+import me.lumenowaty.harmonycore.api.API;
 import me.lumenowaty.harmonycore.components.cuboids.commands.MagicWandCommand;
 import me.lumenowaty.harmonycore.components.cuboids.events.MagicWandListener;
 import me.lumenowaty.harmonycore.components.enchantments.GlowingEnchantment;
@@ -10,11 +10,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class HarmonyCore extends JavaPlugin {
 
     private static HarmonyCore harmonyCore;
-
+    public static API api;
     @Override
     public void onEnable() {
         harmonyCore = this;
-
+        api = new API();
         loadCustomEnchantments();
         registerCommands();
         registerEvents();
