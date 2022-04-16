@@ -9,8 +9,6 @@ public interface Mapable<T, K> {
 
     void remove(T t);
 
-    void put(T t, K k);
-
     void set(T t, K k);
 
     void setMap(Map<T, K> map);

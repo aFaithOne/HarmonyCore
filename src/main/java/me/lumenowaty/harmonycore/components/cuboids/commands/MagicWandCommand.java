@@ -31,7 +31,7 @@ public class MagicWandCommand implements CommandExecutor {
             return false;
         }
         actor.getInventory().addItem(MagicWand.WAND);
-        API.selectedTerritory.put(actor.getUniqueId(), new SelectedTerritory.MagicSelect());
+        API.selectedTerritory.add(actor.getUniqueId(), new SelectedTerritory.MagicSelect());
         return true;
     }
 }

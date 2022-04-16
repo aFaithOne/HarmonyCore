@@ -37,7 +37,7 @@ public class MagicWandListener implements Listener {
         UUID uuid = actor.getUniqueId();
 
         if (! selectedTerritory.containsKey(uuid)) {
-            selectedTerritory.put(uuid, new SelectedTerritory.MagicSelect());
+            selectedTerritory.add(uuid, new SelectedTerritory.MagicSelect());
         }
 
         if (Action.LEFT_CLICK_BLOCK.equals(action)) {

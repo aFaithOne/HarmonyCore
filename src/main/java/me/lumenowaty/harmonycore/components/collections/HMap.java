@@ -22,11 +22,6 @@ public class HMap<T, K> implements Mapable<T, K>, Serializable {
     }
 
     @Override
-    public void put(T t, K k) {
-        this.map.put(t, k);
-    }
-
-    @Override
     public void set(T t, K k) {
         this.map.replace(t, k);
     }

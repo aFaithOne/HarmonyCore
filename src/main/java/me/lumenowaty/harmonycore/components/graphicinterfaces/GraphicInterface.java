@@ -3,16 +3,17 @@ package me.lumenowaty.harmonycore.components.graphicinterfaces;
 import me.lumenowaty.harmonycore.api.API;
 import me.lumenowaty.harmonycore.components.collections.HMap;
 import me.lumenowaty.harmonycore.utils.ChatUtils;
+import net.md_5.bungee.api.chat.ClickEvent;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
 
-public abstract class GraphicInterface extends HMap<Integer, Button> implements Listener {
+public abstract class GraphicInterface extends HMap<Integer, Button> implements Listener, InventoryHolder {
 
     protected String permission;
-    protected String menuName;
     protected Inventory menu;
 
     public GraphicInterface(String permission) {
@@ -23,10 +24,11 @@ public abstract class GraphicInterface extends HMap<Integer, Button> implements 
     public void onPlayerClick(InventoryClickEvent event) {
         if (event.getClickedInventory() == null) return;
 
-        System.out.println(isSimilar(event.getClickedInventory(), getMenu()));
-        if (! isSimilar(event.getClickedInventory(), menu)) return;
-
         if (! (event.getWhoClicked() instanceof Player actor)) return;
+
+        if (! (event.getClickedInventory().getHolder() instanceof GraphicInterface)) return;
+
+        event.setCancelled(true);
 
         if (! (actor.hasPermission(permission) || actor.isOp())) {
             actor.sendMessage(ChatUtils.format(API.pluginConfig.noPermission));
@@ -41,16 +43,6 @@ public abstract class GraphicInterface extends HMap<Integer, Button> implements 
             }
         });
     }
-
-    protected void setButton(int index, Button button) {
-        this.put(index, button);
-    }
-
-    protected boolean isSimilar(Inventory inventory, Inventory clicked) {
-        return (inventory.equals(clicked));
-    }
-
-    protected abstract Inventory getMenu();
 
     protected abstract void loadInventory();
 
