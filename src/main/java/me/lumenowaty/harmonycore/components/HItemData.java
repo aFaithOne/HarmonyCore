@@ -8,9 +8,10 @@ import org.bukkit.Material;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.inventory.ItemStack;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class HItemData {
+public class HItemData implements Serializable {
 
     private final FileConfiguration config;
     private final String path;

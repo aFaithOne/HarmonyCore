@@ -18,6 +18,7 @@ package me.lumenowaty.harmonycore.components;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.Map;
 
 import org.bukkit.configuration.file.FileConfiguration;
@@ -35,7 +36,7 @@ import org.bukkit.plugin.java.JavaPlugin;
  *
  * This software is open source and free. You may use it for every need without explicit permission from the author. This includes adaptations, modifications and commercial use.
  */
-public class YamlConfig<T extends JavaPlugin> {
+public class YamlConfig<T extends JavaPlugin> implements Serializable {
 
     private final File YamlConfig;
     private final File pluginDataFolder;

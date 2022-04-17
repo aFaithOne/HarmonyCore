@@ -3,7 +3,9 @@ package me.lumenowaty.harmonycore.components;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public abstract class ConfigurationClass<T extends JavaPlugin> {
+import java.io.Serializable;
+
+public abstract class ConfigurationClass<T extends JavaPlugin> implements Serializable {
 
     private final T main;
     private final YamlConfig<T> yamlConfig;
