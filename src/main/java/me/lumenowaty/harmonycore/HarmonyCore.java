@@ -10,7 +10,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 public final class HarmonyCore extends JavaPlugin {
 
     private static HarmonyCore harmonyCore;
-    public static API api;
+    private API api;
+
     @Override
     public void onEnable() {
         harmonyCore = this;
@@ -37,8 +38,11 @@ public final class HarmonyCore extends JavaPlugin {
        GlowingEnchantment.load();
     }
 
-
     public static HarmonyCore getInstance() {
         return harmonyCore;
+    }
+
+    public API getAPI() {
+        return api;
     }
 }

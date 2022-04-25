@@ -32,4 +32,7 @@ public class PluginConfig extends ConfigurationClass<HarmonyCore> {
     @ConfigPath(path ="messages.no-permission")
     public String noPermission;
 
+    @ConfigPath(path = "messages.nullable-command")
+    public String nullableCommand;
+
 }

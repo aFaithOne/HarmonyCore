@@ -1,6 +1,5 @@
 package me.lumenowaty.harmonycore.components.collections;
 
-
 import me.lumenowaty.harmonycore.components.interfaces.Listable;
 
 import java.io.Serializable;

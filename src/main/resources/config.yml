@@ -10,3 +10,4 @@ messages:
   magicWand-first-selection: '&aFirst position has been selected.'
   magicWand-second-selection: '&aSecond position has been selected.'
   no-permission: '&cYou do not have permission to use this function.'
+  nullable-command: 'Command %command% is nullable.'
