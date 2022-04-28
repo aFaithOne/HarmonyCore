@@ -3,6 +3,8 @@ package me.lumenowaty.harmonycore.components.cuboids;
 import org.bukkit.Location;
 import org.bukkit.World;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 public class Territory {
@@ -48,12 +50,22 @@ public class Territory {
 
     @Override
     public String toString() {
-        return "world: " + minLocation.getWorld() +
+        return "world: " + minLocation.getWorld().getName() +
                 " x1: " + minLocation.getBlockX() +
                 " y1: " + minLocation.getBlockY() +
                 " z1: " + minLocation.getBlockZ() +
                 " x2: " + maxLocation.getBlockX() +
                 " y2: " + maxLocation.getBlockY() +
                 " z2: " + maxLocation.getBlockZ();
+    }
+
+    public List<String> toStringArray() {
+        return Arrays.asList("world: " + minLocation.getWorld().getName(),
+                " x1: " + minLocation.getBlockX(),
+                " y1: " + minLocation.getBlockY(),
+                " z1: " + minLocation.getBlockZ(),
+                " x2: " + maxLocation.getBlockX(),
+                " y2: " + maxLocation.getBlockY(),
+                " z2: " + maxLocation.getBlockZ());
     }
 }

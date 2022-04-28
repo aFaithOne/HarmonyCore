@@ -1,6 +1,5 @@
 package me.lumenowaty.harmonycore.components;
 
-import me.lumenowaty.harmonycore.api.API;
 import org.bukkit.command.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.jetbrains.annotations.NotNull;
@@ -28,7 +27,7 @@ public abstract class HCommand<T extends JavaPlugin> implements CommandExecutor,
             command.setPermission(permission);
 
         }catch (NullPointerException ex) {
-            ExceptionPrinter.logException(API.pluginConfig.nullableCommand);
+            ExceptionPrinter.logException(ex.getMessage());
         }
     }
 

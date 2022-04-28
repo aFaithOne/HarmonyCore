@@ -2,11 +2,3 @@ name: HarmonyCore
 version: ${project.version}
 main: me.lumenowaty.harmonycore.HarmonyCore
 api-version: 1.17
-
-commands:
-  magicWand:
-
-permissions:
-  harmonyCore:
-    magicWand:
-      default: op

@@ -1,7 +1,9 @@
 package me.lumenowaty.harmonycore.utils;
 
-import me.lumenowaty.harmonycore.api.API;
+import me.lumenowaty.harmonycore.HarmonyCore;
+import me.lumenowaty.harmonycore.components.enchantments.GlowingEnchantment;
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.ItemStack;
@@ -9,6 +11,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class ItemStackFromConfigBuilder implements Listener {
 
@@ -52,14 +55,7 @@ public class ItemStackFromConfigBuilder implements Listener {
         itemMeta.setDisplayName(name);
         itemStack.setItemMeta(itemMeta);
 
-        String key = "GLOWING";
-
-        if (isGlow) API.customEnchantments.getByKey(key).ifPresentOrElse(
-                (s) -> itemStack.addUnsafeEnchantment(s, 0),
-                () -> {
-                    throw new NullPointerException(ChatUtils.format(API.pluginConfig.emptyEnchantment)
-                            .replaceAll("%ench%", key));
-                });
+        if (isGlow) itemStack.addUnsafeEnchantment(Objects.requireNonNull((GlowingEnchantment.getEnchantment())), 0);
 
 
         return itemStack;

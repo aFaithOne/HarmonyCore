@@ -1,6 +1,5 @@
 package me.lumenowaty.harmonycore.components.graphicinterfaces;
 
-import me.lumenowaty.harmonycore.api.API;
 import me.lumenowaty.harmonycore.components.collections.HMap;
 import me.lumenowaty.harmonycore.utils.ChatUtils;
 import org.bukkit.Bukkit;
@@ -22,30 +21,6 @@ public abstract class GraphicInterface extends HMap<Integer, Button> implements 
 
     public GraphicInterface(String permission) {
         this.permission = permission;
-    }
-
-    @EventHandler
-    public void onPlayerClick(InventoryClickEvent event) {
-        if (event.getClickedInventory() == null) return;
-
-        if (! (event.getWhoClicked() instanceof Player actor)) return;
-
-        if (! (isInstanceOfHolder(event.getClickedInventory().getHolder()))) return;
-
-        event.setCancelled(true);
-
-        if (! (actor.hasPermission(permission) || actor.isOp())) {
-            actor.sendMessage(ChatUtils.format(API.pluginConfig.noPermission));
-            return;
-        }
-
-        int index = event.getSlot();
-        this.getByKey(index).ifPresent(s -> {
-            try {
-                s.getAction().accept(actor);
-            }catch (NullPointerException exception) {
-            }
-        });
     }
 
     protected void loadInventory(GraphicInterface holder) {
