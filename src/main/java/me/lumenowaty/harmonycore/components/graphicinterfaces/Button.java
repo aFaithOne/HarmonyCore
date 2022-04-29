@@ -11,13 +11,29 @@ import java.util.function.Consumer;
 
 public class Button implements Serializable {
 
+    private final int id;
     private HItemData buttonItem;
     @Optional
     private Consumer<Player> action;
 
-    public Button(@NotNull HItemData buttonItem, @Nullable Consumer<Player> action) {
+    public Button(@NotNull HItemData buttonItem, @Nullable Consumer<Player> action, int id) {
         this.buttonItem = buttonItem;
         this.action = action;
+        this.id = id;
+    }
+
+    public void insertButtonIntoInterface(GraphicInterface graphicInterface) {
+        graphicInterface.set(id, this);
+    }
+
+    public void insertButtonAsDefaultIntoInterface(GraphicInterface graphicInterface) {
+        for (int i = 0; i < (graphicInterface.rows * 9); i++) {
+            graphicInterface.set(i, this);
+        }
+    }
+
+    public int getId() {
+        return id;
     }
 
     public HItemData getButtonItem() {

@@ -23,7 +23,11 @@ public class HMap<T, K> implements Mapable<T, K>, Serializable {
 
     @Override
     public void set(T t, K k) {
-        this.map.replace(t, k);
+        if (! map.containsKey(t)) {
+            this.map.put(t, k);
+        } else {
+            this.map.replace(t, k);
+        }
     }
 
     @Override

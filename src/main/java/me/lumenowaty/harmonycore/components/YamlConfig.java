@@ -60,6 +60,14 @@ public class YamlConfig<T extends JavaPlugin> implements Serializable {
         config = YamlConfiguration.loadConfiguration(YamlConfig);
     }
 
+    public YamlConfig(String name, T t, String path) {
+        this.t = t;
+        this.name = name + ".yml";
+        this.pluginDataFolder = new File(t.getDataFolder() + File.separator + path);
+
+        YamlConfig = new File(pluginDataFolder, this.name);
+        config = YamlConfiguration.loadConfiguration(YamlConfig);
+    }
 
     /**
      * @since 1.0.0
@@ -74,6 +82,16 @@ public class YamlConfig<T extends JavaPlugin> implements Serializable {
                 this.pluginDataFolder.mkdir();
             }
             t.saveResource(name, false);
+        }
+    }
+
+    public void createDataConfig() {
+        if (! YamlConfig.exists()) {
+
+            if (! this.pluginDataFolder.exists()) {
+
+                this.pluginDataFolder.mkdir();
+            }
         }
     }
 

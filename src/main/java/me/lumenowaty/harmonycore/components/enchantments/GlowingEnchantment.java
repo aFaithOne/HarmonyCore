@@ -63,34 +63,27 @@ public class GlowingEnchantment extends Enchantment {
 
 
     public static void load() {
-        System.out.println("test");
         try {
             Field f = Enchantment.class.getDeclaredField("acceptingNew");
             f.setAccessible(true);
             f.set(null, true);
         }
         catch (Exception e) {
-            System.out.println("3");
             e.printStackTrace();
         }
         try {
             GlowingEnchantment glow = new GlowingEnchantment(enchKey);
             Enchantment.registerEnchantment(glow);
-            System.out.println("hejo");
-            System.out.println(Arrays.toString(Enchantment.values()));
         }
         catch (IllegalArgumentException e){
-            System.out.println("1");
             ExceptionPrinter.logException(e.getMessage());
         }
         catch(Exception e){
-            System.out.println("2");
             e.printStackTrace();
         }
     }
 
     public static Enchantment getEnchantment() {
-        System.out.println(Arrays.toString(Enchantment.values()));
         return Enchantment.getByKey(enchKey);
     }
 }

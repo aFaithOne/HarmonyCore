@@ -3,9 +3,10 @@ package me.lumenowaty.harmonycore.components.cuboids;
 import me.lumenowaty.harmonycore.components.collections.HMap;
 import org.bukkit.Location;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class SelectedTerritory extends HMap<UUID, SelectedTerritory.MagicSelect> {
+public class SelectedTerritory extends HMap<UUID, SelectedTerritory.MagicSelect> implements Serializable {
 
     public static class MagicSelect {
 

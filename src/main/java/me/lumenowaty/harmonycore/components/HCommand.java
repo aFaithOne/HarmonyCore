@@ -24,7 +24,6 @@ public abstract class HCommand<T extends JavaPlugin> implements CommandExecutor,
             PluginCommand command = plugin.getCommand(this.command);
             command.setExecutor(this);
             command.setTabCompleter(this);
-            command.setPermission(permission);
 
         }catch (NullPointerException ex) {
             ExceptionPrinter.logException(ex.getMessage());
