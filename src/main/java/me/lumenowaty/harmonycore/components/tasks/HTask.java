@@ -36,9 +36,11 @@ public abstract class HTask<T extends JavaPlugin> implements Taskable {
 
             @Override
             public void run() {
-                action.run();
                 stop();
+                action.run();
             }
         }.runTaskLaterAsynchronously(main, 20L * seconds);
     }
+
+    protected abstract void startTask();
 }

@@ -2,7 +2,7 @@ package me.lumenowaty.harmonycore.components.tasks;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-public abstract class HDelayedTask<T extends JavaPlugin> extends HTask {
+public abstract class HDelayedTask<T extends JavaPlugin> extends HTask<T> {
 
     protected final int delayed;
 
