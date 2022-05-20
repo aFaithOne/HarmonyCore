@@ -11,10 +11,11 @@ import java.util.List;
 
 public abstract class BossBarTimerAnimation<T extends JavaPlugin> extends HRepeatingTask<T> {
 
-    protected BossBar bossBar;
+    protected BossBar animatedBar;
 
-    public BossBarTimerAnimation(T main, int period, int delayed) {
+    public BossBarTimerAnimation(T main, int period, int delayed, BossBar animatedBar) {
         super(main, period, delayed);
+        this.animatedBar = animatedBar;
     }
 
     @Override
@@ -29,28 +30,28 @@ public abstract class BossBarTimerAnimation<T extends JavaPlugin> extends HRepea
 
     @Override
     public void stop() {
-        bossBar.removeAll();
+        animatedBar.removeAll();
         Bukkit.getScheduler().cancelTask(this.id);
     }
 
     public void addPlayersToAnimation(List<Player> players) {
-        players.forEach(bossBar::addPlayer);
+        players.forEach(animatedBar::addPlayer);
     }
 
     public void addPlayerToAnimation(Player player) {
-        bossBar.addPlayer(player);
+        animatedBar.addPlayer(player);
     }
 
     public void removePlayerFromAnimation(Player player) {
-        bossBar.removePlayer(player);
+        animatedBar.removePlayer(player);
     }
 
     public void removePlayersFromAnimation(List<Player> players) {
-        players.forEach(bossBar::removePlayer);
+        players.forEach(animatedBar::removePlayer);
     }
 
-    public BossBar getBossBar() {
-        return bossBar;
+    public BossBar getAnimatedBar() {
+        return animatedBar;
     }
 
     public abstract void animationChanges();
