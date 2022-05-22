@@ -3,7 +3,6 @@ package me.lumenowaty.harmonycore.components.tasks;
 import me.lumenowaty.harmonycore.components.interfaces.Taskable;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
 
 
 public abstract class HTask<T extends JavaPlugin> implements Taskable {
@@ -32,14 +31,10 @@ public abstract class HTask<T extends JavaPlugin> implements Taskable {
 
     @Override
     public void setStopTask(Runnable action, long seconds) {
-        new BukkitRunnable() {
-
-            @Override
-            public void run() {
-                stop();
-                action.run();
-            }
-        }.runTaskLaterAsynchronously(main, 20L * seconds);
+        Bukkit.getScheduler().scheduleSyncDelayedTask(main, () -> {
+            stop();
+            action.run();
+        },20L * seconds);
     }
 
     protected abstract void startTask();
