@@ -3,14 +3,17 @@ package me.lumenowaty.harmonycore.components.cuboids;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 public class Territory implements Serializable {
 
+    private Structure<? extends JavaPlugin> structure;
     private String world;
 
     private HLocation min;
@@ -78,6 +81,14 @@ public class Territory implements Serializable {
 
     public HLocation getMax() {
         return max;
+    }
+
+    public Optional<Structure<? extends JavaPlugin>> getStructure() {
+        return Optional.ofNullable(structure);
+    }
+
+    public void setStructure(Structure<? extends JavaPlugin> structure) {
+        this.structure = structure;
     }
 
     @Override
