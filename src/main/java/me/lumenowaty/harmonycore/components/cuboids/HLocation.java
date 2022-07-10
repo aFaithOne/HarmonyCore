@@ -1,4 +1,4 @@
-package me.lumenowaty.harmonycore.components;
+package me.lumenowaty.harmonycore.components.cuboids;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -21,6 +21,15 @@ public class HLocation implements Serializable {
         this.yaw = location.getYaw();
         this.pitch = location.getPitch();
         this.world = location.getWorld().getName();
+    }
+
+    public HLocation(int x, int y, int z, float yaw, float pitch, String world) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.yaw = yaw;
+        this.pitch = pitch;
+        this.world = world;
     }
 
     public Location getLocation() {

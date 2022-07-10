@@ -12,6 +12,11 @@ public class HList<T> implements Listable<T>, Serializable {
     protected List<T> list = new ArrayList<>();
 
     @Override
+    public List<T> clone() {
+        return new ArrayList<>(list);
+    }
+
+    @Override
     public void add(T s) {
         this.list.add(s);
     }

@@ -5,6 +5,8 @@ import java.util.Optional;
 
 public interface Listable<T> {
 
+    List<T> clone();
+
     void add(T t);
 
     void remove(T t);

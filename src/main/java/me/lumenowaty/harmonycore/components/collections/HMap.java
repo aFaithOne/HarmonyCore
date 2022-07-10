@@ -12,6 +12,11 @@ public class HMap<T, K> implements Mapable<T, K>, Serializable {
     protected Map<T, K> map = new HashMap<>();
 
     @Override
+    public Map<T, K> clone() {
+        return new HashMap<>(map);
+    }
+
+    @Override
     public void add(T t, K k) {
         this.map.put(t, k);
     }

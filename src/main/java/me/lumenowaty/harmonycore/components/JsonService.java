@@ -1,7 +1,7 @@
 package me.lumenowaty.harmonycore.components;
 
 import com.google.gson.Gson;
-import org.bukkit.plugin.java.JavaPlugin;
+import com.google.gson.GsonBuilder;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,22 +18,23 @@ public final class JsonService<S> {
     private S object;
 
 
-    public JsonService(JavaPlugin main, S object, String fileName, Path path) {
-        this.gson = new Gson();
+    public JsonService(S object, String fileName, Path path) {
+        this.gson = new GsonBuilder().setPrettyPrinting().create();
         this.object = object;
         this.path = Path.of(
-                main.getDataFolder() + File.separator +
                         path + File.separator +
-                        fileName + File.separator + "json");
+                        fileName  + ".json");
     }
 
     public boolean saveObjectDataToJson() {
         try {
             Writer writer = Files.newBufferedWriter(path);
             gson.toJson(object, writer);
+            writer.close();
             return true;
         } catch (IOException e) {
-            ExceptionPrinter.logException(e.getLocalizedMessage());
+            e.printStackTrace();
+            ExceptionPrinter.logException(e.getMessage());
             return false;
         }
     }
@@ -42,9 +43,11 @@ public final class JsonService<S> {
         try {
             Reader reader = Files.newBufferedReader(path);
             this.object = gson.fromJson(reader, clazz);
+            reader.close();
             return true;
         } catch (IOException e) {
-            ExceptionPrinter.logException(e.getLocalizedMessage());
+            e.printStackTrace();
+            ExceptionPrinter.logException(e.getMessage());
             return false;
         }
     }

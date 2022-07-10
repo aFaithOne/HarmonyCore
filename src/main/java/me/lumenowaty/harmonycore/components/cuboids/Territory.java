@@ -13,65 +13,91 @@ public class Territory implements Serializable {
 
     private String world;
 
-    private int xMin;
-    private int yMin;
-    private int zMin;
-
-    private int xMax;
-    private int yMax;
-    private int zMax;
+    private HLocation min;
+    private HLocation max;
 
     public Territory(Location firstLocation, Location secondLocation) {
         sortLocations(firstLocation, secondLocation);
     }
 
     private void sortLocations(Location location, Location location2) {
-        xMin = Math.min(location.getBlockX(), location2.getBlockX());
-        zMin = Math.min(location.getBlockZ(), location2.getBlockZ());
-        yMin = Math.min(location.getBlockY(), location2.getBlockY());
-        xMax = Math.max(location.getBlockX(), location2.getBlockX());
-        zMax = Math.max(location.getBlockZ(), location2.getBlockZ());
-        yMax = Math.max(location.getBlockY(), location2.getBlockY());
-        world = location.getWorld().getName();
+        this.world = location.getWorld().getName();
+        int xMin = Math.min(location.getBlockX(), location2.getBlockX());
+        int yMin = Math.min(location.getBlockY(), location2.getBlockY());
+        int zMin = Math.min(location.getBlockZ(), location2.getBlockZ());
+
+        int xMax = Math.max(location.getBlockX(), location2.getBlockX());
+        int yMax = Math.max(location.getBlockY(), location2.getBlockY());
+        int zMax = Math.max(location.getBlockZ(), location2.getBlockZ());
+        this.min = new HLocation(new Location(Bukkit.getWorld(world), xMin, yMin, zMin));
+        this.max = new HLocation(new Location(Bukkit.getWorld(world), xMax, yMax, zMax));
     }
 
-    private boolean isLocationInside(Location location) {
+    private boolean isLocationInside3d(Location location) {
         int x = location.getBlockX();
         int y = location.getBlockY();
         int z = location.getBlockZ();
         World world = location.getWorld();
 
-        return  (! (x > xMax ||
-                y > yMax ||
-                z > zMax ||
-                x < xMin ||
-                y < yMin ||
-                z < zMin ||
+        return  (! (x > max.getX() ||
+                y > max.getY() ||
+                z > max.getZ() ||
+                x < min.getX() ||
+                y < min.getY() ||
+                z < min.getZ() ||
                 !Objects.equals(world, Bukkit.getWorld(this.world))));
     }
 
-    public boolean isLocationInsideTerritory(Location location) {
-        return isLocationInside(location);
+    private boolean isLocationInside2d(Location location) {
+        int x = location.getBlockX();
+        int z = location.getBlockZ();
+        World world = location.getWorld();
+
+        return  (! (x > max.getX() ||
+                z > max.getZ() ||
+                x < min.getX() ||
+                z < min.getZ() ||
+                !Objects.equals(world, Bukkit.getWorld(this.world))));
+    }
+
+    public boolean isLocationInsideTerritory3d(Location location) {
+        return isLocationInside3d(location);
+    }
+
+    public boolean isLocationInsideTerritory2d(Location location) {
+        return isLocationInside2d(location);
+    }
+
+    public String getWorld() {
+        return world;
+    }
+
+    public HLocation getMin() {
+        return min;
+    }
+
+    public HLocation getMax() {
+        return max;
     }
 
     @Override
     public String toString() {
         return "world: " + world +
-                " x1: " + xMin +
-                " y1: " + yMin +
-                " z1: " + zMin +
-                " x2: " + xMax +
-                " y2: " + yMax +
-                " z2: " + zMax;
+                " x1: " + min.getX() +
+                " y1: " + min.getY() +
+                " z1: " + min.getZ() +
+                " x2: " + max.getX() +
+                " y2: " + max.getY() +
+                " z2: " + max.getZ();
     }
 
     public List<String> toStringArray() {
         return Arrays.asList("world: " + world,
-                " x1: " + xMin,
-                " y1: " + yMin,
-                " z1: " + zMin,
-                " x2: " + xMax,
-                " y2: " + yMax,
-                " z2: " + zMax);
+                " x1: " + min.getX(),
+                " y1: " + min.getY(),
+                " z1: " + min.getZ(),
+                " x2: " + max.getX(),
+                " y2: " + max.getY(),
+                " z2: " + max.getZ());
     }
 }

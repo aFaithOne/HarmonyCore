@@ -5,6 +5,8 @@ import java.util.Optional;
 
 public interface Mapable<T, K> {
 
+    Map<T, K> clone();
+
     void add(T t, K k);
 
     void remove(T t);
